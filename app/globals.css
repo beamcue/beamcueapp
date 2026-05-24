@@ -3,14 +3,23 @@
 @tailwind utilities;
 
 :root {
-  color-scheme: dark;
+  color-scheme: light;
 }
 
 html,
 body {
-  background: #0a0a0b;
-  color: #fafafa;
+  background: #fafaf7;
+  color: #0f0f10;
   min-height: 100%;
+  font-family: var(--font-sans), ui-sans-serif, system-ui, -apple-system, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* The font-serif Tailwind utility maps to the Fraunces variable */
+.font-serif {
+  font-family: var(--font-serif), ui-serif, Georgia, serif;
+  font-feature-settings: 'ss01', 'ss02';
 }
 
 * {
@@ -22,7 +31,8 @@ button,
   cursor: pointer;
 }
 
-/* Disable text selection on tap-targets (operator UI) */
+/* App surfaces (operator, overlay, dashboard) keep their dark aesthetic.
+   They opt in via data-surface="app" on a parent, or per-page styling. */
 .no-select {
   user-select: none;
   -webkit-user-select: none;

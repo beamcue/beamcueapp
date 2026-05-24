@@ -22,7 +22,7 @@ export default async function SetupPage({ params }: { params: { slug: string } }
   const operatorUrl = `${baseUrl}/operator/${church.slug}`;
 
   return (
-    <main className="min-h-screen px-6 py-8 max-w-3xl mx-auto">
+    <main className="min-h-screen bg-bg text-text px-6 py-8"><div className="max-w-3xl mx-auto">
       <Link href="/dashboard" className="text-sm text-muted hover:text-text mb-12 inline-block">
         ← Back to dashboard
       </Link>
@@ -71,6 +71,7 @@ export default async function SetupPage({ params }: { params: { slug: string } }
         >
           Open Operator →
         </Link>
+      </div>
       </div>
     </main>
   );

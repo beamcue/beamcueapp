@@ -103,7 +103,7 @@ export function OperatorBoard({ church, initialLiveState }: Props) {
   }
 
   return (
-    <main className="min-h-screen flex flex-col">
+    <main className="min-h-screen bg-bg text-text flex flex-col">
       {/* Header */}
       <header className="border-b border-border px-4 py-3 flex items-center justify-between">
         <Link href="/dashboard" className="text-sm text-muted">← {church.name}</Link>

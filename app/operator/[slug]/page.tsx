@@ -26,9 +26,9 @@ export default async function OperatorPage({ params }: { params: { slug: string 
 
   if (!membership) {
     return (
-      <main className="min-h-screen flex items-center justify-center px-6">
+      <main className="min-h-screen bg-bg text-text flex items-center justify-center px-6">
         <div className="text-center">
-          <p className="text-muted mb-4">You're not a member of this church.</p>
+          <p className="text-white/60 mb-4">You're not a member of this church.</p>
           <Link href="/dashboard" className="text-beam">Back to dashboard</Link>
         </div>
       </main>

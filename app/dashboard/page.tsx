@@ -17,7 +17,7 @@ export default async function DashboardPage() {
   const churches = (memberships ?? []).map((m: any) => m.churches).filter(Boolean);
 
   return (
-    <main className="min-h-screen px-6 py-8 max-w-4xl mx-auto">
+    <main className="min-h-screen bg-bg text-text px-6 py-8"><div className="max-w-4xl mx-auto">
       <div className="flex items-center justify-between mb-12">
         <Link href="/" className="text-xl font-semibold">Beamcue</Link>
         <div className="flex items-center gap-4 text-sm text-muted">
@@ -69,6 +69,7 @@ export default async function DashboardPage() {
           </div>
         </div>
       )}
+      </div>
     </main>
   );
 }

@@ -16,9 +16,9 @@ export default async function DevOperatorPage() {
 
   if (!church) {
     return (
-      <main className="min-h-screen flex flex-col items-center justify-center px-6 text-center">
+      <main className="min-h-screen bg-bg text-text flex flex-col items-center justify-center px-6 text-center">
         <h1 className="text-2xl font-semibold mb-4">No test church found</h1>
-        <p className="text-muted mb-6 max-w-md">
+        <p className="text-white/60 mb-6 max-w-md">
           Run <code className="bg-surface px-2 py-1 rounded text-beam">supabase/migrations/002_test_data.sql</code>
           {' '}in your Supabase SQL Editor to create the "test" church.
         </p>

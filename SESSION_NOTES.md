@@ -26,6 +26,27 @@
 
 ## Critical context for tomorrow
 
+### THE BUSINESS MODEL (READ THIS FIRST)
+On 25 May, Bolaji and Claude worked through three iterations of the
+business model. Final decision:
+
+**Hands-off, product-led SaaS. No sales calls. Content + ads + community engine.**
+
+The current operating plan is `ROADMAP_TO_DECEMBER.md`.
+The old `ROADMAP_TO_SEPTEMBER.md` (hybrid model with sales calls) is
+SUPERSEDED — do not follow it. It's preserved for historical context.
+
+Pricing structure:
+- Free (with watermark)
+- Starter £9/mo or £89/yr
+- Pro £19/mo or £179/yr
+- Studio £49/mo or £459/yr
+- Optional Setup add-on £199 one-time at checkout
+
+This is different from what's currently coded (which is Free + Pro only).
+Updating the product + landing page + Stripe to reflect the 4-tier
+structure is a Phase 1 task.
+
 ### The PAT
 Bolaji's GitHub PAT for the beamcue org is stored in chat history (decided not to revoke).
 **Do NOT commit the token value to any file in the repo** — GitHub secret-scanning will reject the push.

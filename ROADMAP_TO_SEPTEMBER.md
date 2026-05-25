@@ -1,5 +1,25 @@
 # Beamcue — Roadmap to September 2026
 
+> **⚠️ SUPERSEDED — DO NOT FOLLOW THIS PLAN**
+>
+> This document is kept for historical reference only. Bolaji reviewed
+> it on 25 May 2026 and identified that the hybrid model with sales
+> calls replicated patterns from PestFlow/Altitude/Alpha Piling that
+> drained him. We pivoted to a hands-off product-led model.
+>
+> **The current operating plan is: `ROADMAP_TO_DECEMBER.md`**
+>
+> Key differences:
+> - Hands-off, no sales calls (vs 5-15 calls/week in this old plan)
+> - 4-tier pricing instead of 2-tier
+> - Target slips from end of September to end of December
+> - Content + ads + community replace done-for-you as the engine
+>
+> The done-for-you model is preserved as an optional £199 checkout
+> add-on, not as the lead offer.
+
+---
+
 **Author:** Bolaji Olatoye
 **Date written:** 25 May 2026
 **Target:** £3-5K MRR by 30 September 2026

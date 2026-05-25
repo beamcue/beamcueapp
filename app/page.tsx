@@ -347,6 +347,12 @@ export default function HomePage() {
               <Link href="/overlay/test" className="px-3 py-1.5 border border-yellow-700/30 text-yellow-700 rounded">
                 /overlay/test
               </Link>
+              <Link href="/dev/calvary" className="px-3 py-1.5 border border-yellow-700/30 text-yellow-700 rounded">
+                /dev/calvary
+              </Link>
+              <Link href="/overlay/calvary-hephzibah" className="px-3 py-1.5 border border-yellow-700/30 text-yellow-700 rounded">
+                /overlay/calvary-hephzibah
+              </Link>
             </div>
           </div>
         )}

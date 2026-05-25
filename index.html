@@ -1,0 +1,424 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Beamcue — Slide and scripture overlay for OBS</title>
+<meta name="description" content="Browser-based slide and scripture overlay for OBS Studio. Push lyrics, scripture, and lower thirds from your phone. Built for churches that stream.">
+<meta property="og:title" content="Beamcue — Slide and scripture overlay for OBS">
+<meta property="og:description" content="Browser-based slide and scripture overlay for OBS Studio. Push from your phone. No install.">
+<meta property="og:type" content="website">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Inter+Tight:wght@400;500;600&display=swap" rel="stylesheet">
+
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+  tailwind.config = {
+    theme: {
+      extend: {
+        colors: {
+          cream: '#fafaf7',
+          ink: '#0f0f10',
+          muted: '#4a4a4c',
+          line: '#e8e6df',
+          beam: '#ff5c1f',
+        },
+        fontFamily: {
+          serif: ['Fraunces', 'ui-serif', 'Georgia', 'serif'],
+          sans: ['"Inter Tight"', 'ui-sans-serif', 'system-ui', 'sans-serif'],
+        },
+      },
+    },
+  };
+</script>
+<style>
+  body { font-family: 'Inter Tight', ui-sans-serif, system-ui, sans-serif; background: #fafaf7; color: #0f0f10; -webkit-font-smoothing: antialiased; }
+  .font-serif { font-family: 'Fraunces', ui-serif, Georgia, serif; font-feature-settings: 'ss01', 'ss02'; }
+  * { -webkit-tap-highlight-color: transparent; }
+</style>
+</head>
+<body>
+
+<div class="bg-cream text-ink">
+
+  <!-- NAV -->
+  <nav class="border-b border-line sticky top-0 bg-cream/85 backdrop-blur z-50">
+    <div class="max-w-6xl mx-auto px-6 py-4 flex items-center justify-between">
+      <a href="/" class="font-serif text-xl tracking-tight">Beamcue</a>
+      <div class="flex items-center gap-7 text-sm">
+        <a href="#how" class="text-muted hover:text-ink transition hidden sm:inline">How it works</a>
+        <a href="#compare" class="text-muted hover:text-ink transition hidden sm:inline">Compare</a>
+        <a href="#pricing" class="text-muted hover:text-ink transition hidden sm:inline">Pricing</a>
+        <span class="text-muted text-xs">Beta — full app launching soon</span>
+      </div>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <section class="border-b border-line">
+    <div class="max-w-6xl mx-auto px-6 pt-20 pb-24 grid lg:grid-cols-[1.05fr_1fr] gap-16 items-center">
+      <div>
+        <div class="inline-flex items-center gap-2 mb-8 text-xs uppercase tracking-[0.18em] text-muted">
+          <span class="w-1.5 h-1.5 rounded-full bg-beam"></span>
+          For churches that stream
+        </div>
+
+        <h1 class="font-serif text-5xl sm:text-6xl lg:text-7xl leading-[1.02] tracking-tight mb-7">
+          Push lyrics, scripture, and lower thirds to OBS — <span class="text-beam italic">from your phone.</span>
+        </h1>
+
+        <p class="text-lg sm:text-xl text-muted leading-relaxed mb-10 max-w-xl">
+          Beamcue is a browser-based overlay system for OBS Studio. No install, no PowerPoint, no Mac required. Built for the volunteer media team that just wants Sunday to work.
+        </p>
+
+        <div class="flex flex-wrap items-center gap-4 mb-6">
+          <a href="#waitlist" class="px-7 py-3.5 bg-ink text-cream rounded-md font-medium hover:bg-beam transition">
+            Join the waitlist
+          </a>
+          <a href="#how" class="px-7 py-3.5 border border-ink/15 rounded-md font-medium hover:border-ink/40 transition">
+            See how it works
+          </a>
+        </div>
+
+        <p class="text-sm text-muted">
+          Free forever for one church. We'll email you when sign-ups open.
+        </p>
+      </div>
+
+      <div class="relative">
+        <div class="aspect-video bg-ink rounded-lg overflow-hidden shadow-2xl shadow-ink/15 border border-ink/10 relative">
+          <div class="absolute inset-0 flex flex-col items-center justify-center text-center px-10">
+            <p class="text-white/95 text-lg sm:text-xl font-light leading-snug mb-5 max-w-sm">
+              For God so loved the world, that he gave his only begotten Son
+            </p>
+            <p class="text-beam text-sm font-semibold tracking-wider">JOHN 3:16</p>
+          </div>
+          <div class="absolute bottom-3 right-3 text-white/30 text-xs font-light">beamcue.com</div>
+        </div>
+        <div class="absolute -bottom-4 -left-4 bg-cream border border-line rounded-md px-3 py-1.5 text-xs font-medium shadow-sm">
+          <span class="text-muted">Live in</span> <span class="text-ink">OBS</span>
+        </div>
+        <div class="absolute -top-4 -right-4 bg-beam text-white rounded-md px-3 py-1.5 text-xs font-medium shadow-sm flex items-center gap-1.5">
+          <span class="w-1.5 h-1.5 rounded-full bg-white animate-pulse"></span>
+          Pushed from phone
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- HOW IT WORKS -->
+  <section id="how" class="border-b border-line py-24">
+    <div class="max-w-6xl mx-auto px-6">
+      <div class="mb-16">
+        <p class="text-xs uppercase tracking-[0.18em] text-beam mb-4">How it works</p>
+        <h2 class="font-serif text-4xl sm:text-5xl tracking-tight max-w-2xl leading-tight">
+          From signup to live overlay in two minutes.
+        </h2>
+      </div>
+
+      <div class="grid md:grid-cols-3 gap-x-8 gap-y-12">
+        <div>
+          <p class="font-serif text-2xl text-beam mb-4">01</p>
+          <h3 class="font-serif text-xl mb-3 tracking-tight">Sign up</h3>
+          <p class="text-muted leading-relaxed">Magic link to your email. No passwords, no credit card. Set up your church in under a minute.</p>
+        </div>
+        <div>
+          <p class="font-serif text-2xl text-beam mb-4">02</p>
+          <h3 class="font-serif text-xl mb-3 tracking-tight">Paste a URL into OBS</h3>
+          <p class="text-muted leading-relaxed">Add it as a Browser Source in your OBS scene. One copy-paste. That's the entire install.</p>
+        </div>
+        <div>
+          <p class="font-serif text-2xl text-beam mb-4">03</p>
+          <h3 class="font-serif text-xl mb-3 tracking-tight">Push slides from any device</h3>
+          <p class="text-muted leading-relaxed">Phone, iPad, laptop. Operators tap a slide, the overlay in OBS updates instantly. No refresh needed.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- WHO IT'S FOR -->
+  <section class="border-b border-line py-24" style="background: #f4f3ee;">
+    <div class="max-w-6xl mx-auto px-6">
+      <div class="mb-16">
+        <p class="text-xs uppercase tracking-[0.18em] text-beam mb-4">Who it's for</p>
+        <h2 class="font-serif text-4xl sm:text-5xl tracking-tight max-w-2xl leading-tight">
+          Built for the people who actually run Sunday.
+        </h2>
+      </div>
+
+      <div class="grid md:grid-cols-3 gap-8">
+        <div class="bg-cream border border-line rounded-lg p-7">
+          <h3 class="font-serif text-xl mb-3 tracking-tight">Solo media volunteers</h3>
+          <p class="text-muted leading-relaxed text-sm">You set up the AV at your small-to-mid church. You don't have time to learn ProPresenter. Beamcue is the simplest tool that just works.</p>
+        </div>
+        <div class="bg-cream border border-line rounded-lg p-7">
+          <h3 class="font-serif text-xl mb-3 tracking-tight">Worship leaders</h3>
+          <p class="text-muted leading-relaxed text-sm">Push scripture during the sermon, lyrics during songs — all from the iPad on stage. No more "wait, can we get the verse up?"</p>
+        </div>
+        <div class="bg-cream border border-line rounded-lg p-7">
+          <h3 class="font-serif text-xl mb-3 tracking-tight">Streaming churches</h3>
+          <p class="text-muted leading-relaxed text-sm">You broadcast Sunday services to YouTube or Facebook. Beamcue gives you broadcast-quality lower thirds and overlays — without the broadcast budget.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- COMPARISON -->
+  <section id="compare" class="border-b border-line py-24">
+    <div class="max-w-6xl mx-auto px-6">
+      <div class="mb-16">
+        <p class="text-xs uppercase tracking-[0.18em] text-beam mb-4">Why Beamcue</p>
+        <h2 class="font-serif text-4xl sm:text-5xl tracking-tight max-w-2xl leading-tight">
+          You're already using something. Here's how Beamcue differs.
+        </h2>
+      </div>
+
+      <div class="overflow-x-auto -mx-6 px-6">
+        <table class="w-full min-w-[640px] border-collapse">
+          <thead>
+            <tr class="border-b border-ink/15">
+              <th class="text-left py-4 pr-4 font-medium text-sm text-muted"></th>
+              <th class="text-left py-4 px-4 font-serif text-lg">
+                Beamcue
+                <span class="block text-xs font-normal text-beam mt-1" style="font-family: 'Inter Tight', sans-serif;">£19/mo</span>
+              </th>
+              <th class="text-left py-4 px-4 font-medium text-sm text-muted">
+                ProPresenter
+                <span class="block text-xs font-normal text-muted/70 mt-1">$499 + $499 Pro</span>
+              </th>
+              <th class="text-left py-4 px-4 font-medium text-sm text-muted">
+                EasyWorship
+                <span class="block text-xs font-normal text-muted/70 mt-1">$395/yr</span>
+              </th>
+              <th class="text-left py-4 px-4 font-medium text-sm text-muted">
+                OBS plugins
+                <span class="block text-xs font-normal text-muted/70 mt-1">Free</span>
+              </th>
+            </tr>
+          </thead>
+          <tbody class="text-sm">
+            <tr class="border-b border-line">
+              <td class="py-4 pr-4 font-medium text-ink">Install required</td>
+              <td class="py-4 px-4 text-ink font-medium" style="background: rgba(255, 92, 31, 0.04);">No (browser only)</td>
+              <td class="py-4 px-4 text-muted">Yes (Mac/Win)</td>
+              <td class="py-4 px-4 text-muted">Yes (Windows)</td>
+              <td class="py-4 px-4 text-muted">Per-plugin</td>
+            </tr>
+            <tr class="border-b border-line">
+              <td class="py-4 pr-4 font-medium text-ink">Setup time</td>
+              <td class="py-4 px-4 text-ink font-medium" style="background: rgba(255, 92, 31, 0.04);">60 seconds</td>
+              <td class="py-4 px-4 text-muted">Several hours</td>
+              <td class="py-4 px-4 text-muted">30+ minutes</td>
+              <td class="py-4 px-4 text-muted">Varies</td>
+            </tr>
+            <tr class="border-b border-line">
+              <td class="py-4 pr-4 font-medium text-ink">Control from phone</td>
+              <td class="py-4 px-4 text-ink font-medium" style="background: rgba(255, 92, 31, 0.04);">Yes</td>
+              <td class="py-4 px-4 text-muted">Limited</td>
+              <td class="py-4 px-4 text-muted">No</td>
+              <td class="py-4 px-4 text-muted">No</td>
+            </tr>
+            <tr class="border-b border-line">
+              <td class="py-4 pr-4 font-medium text-ink">Multi-operator support</td>
+              <td class="py-4 px-4 text-ink font-medium" style="background: rgba(255, 92, 31, 0.04);">Yes</td>
+              <td class="py-4 px-4 text-muted">$$$ tier</td>
+              <td class="py-4 px-4 text-muted">No</td>
+              <td class="py-4 px-4 text-muted">No</td>
+            </tr>
+            <tr class="border-b border-line">
+              <td class="py-4 pr-4 font-medium text-ink">Real-time sync</td>
+              <td class="py-4 px-4 text-ink font-medium" style="background: rgba(255, 92, 31, 0.04);">Yes</td>
+              <td class="py-4 px-4 text-muted">Same-machine</td>
+              <td class="py-4 px-4 text-muted">Same-machine</td>
+              <td class="py-4 px-4 text-muted">Plugin-dependent</td>
+            </tr>
+            <tr class="border-b border-line">
+              <td class="py-4 pr-4 font-medium text-ink">Built for streaming</td>
+              <td class="py-4 px-4 text-ink font-medium" style="background: rgba(255, 92, 31, 0.04);">Yes</td>
+              <td class="py-4 px-4 text-muted">Generic</td>
+              <td class="py-4 px-4 text-muted">Generic</td>
+              <td class="py-4 px-4 text-muted">Generic</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <p class="text-xs text-muted mt-6">
+        Comparisons reflect public pricing and feature pages as of May 2026. Beamcue uses the existing OBS your church already has — it doesn't replace it.
+      </p>
+    </div>
+  </section>
+
+  <!-- PRICING -->
+  <section id="pricing" class="border-b border-line py-24" style="background: #f4f3ee;">
+    <div class="max-w-6xl mx-auto px-6">
+      <div class="mb-16 text-center">
+        <p class="text-xs uppercase tracking-[0.18em] text-beam mb-4">Pricing</p>
+        <h2 class="font-serif text-4xl sm:text-5xl tracking-tight max-w-2xl mx-auto leading-tight">
+          Free for one church. £19 a month to remove the watermark.
+        </h2>
+      </div>
+
+      <div class="grid md:grid-cols-2 gap-6 max-w-4xl mx-auto">
+        <div class="bg-cream border border-line rounded-lg p-8">
+          <p class="text-sm font-medium text-muted mb-2">Free</p>
+          <p class="font-serif text-4xl mb-1">£0</p>
+          <p class="text-sm text-muted mb-8">forever, for one church</p>
+          <ul class="space-y-3 mb-10 text-sm">
+            <li class="flex items-start gap-3">
+              <svg class="w-4 h-4 mt-0.5 flex-shrink-0 text-beam" viewBox="0 0 16 16" fill="none"><path d="M3 8L7 12L13 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              <span class="text-ink">Everything you need for Sunday</span>
+            </li>
+            <li class="flex items-start gap-3">
+              <svg class="w-4 h-4 mt-0.5 flex-shrink-0 text-beam" viewBox="0 0 16 16" fill="none"><path d="M3 8L7 12L13 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              <span class="text-ink">All five slide types</span>
+            </li>
+            <li class="flex items-start gap-3">
+              <svg class="w-4 h-4 mt-0.5 flex-shrink-0 text-beam" viewBox="0 0 16 16" fill="none"><path d="M3 8L7 12L13 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              <span class="text-ink">Unlimited team members</span>
+            </li>
+            <li class="flex items-start gap-3">
+              <svg class="w-4 h-4 mt-0.5 flex-shrink-0 text-beam" viewBox="0 0 16 16" fill="none"><path d="M3 8L7 12L13 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              <span class="text-ink">"Powered by Beamcue" watermark on overlay</span>
+            </li>
+          </ul>
+          <a href="#waitlist" class="block w-full text-center px-5 py-3 border border-ink rounded-md font-medium hover:bg-ink hover:text-cream transition">
+            Join the waitlist
+          </a>
+        </div>
+
+        <div class="bg-ink text-cream rounded-lg p-8 relative">
+          <div class="absolute -top-3 right-6 bg-beam text-white text-xs px-2.5 py-1 rounded font-medium">Recommended</div>
+          <p class="text-sm font-medium text-cream/60 mb-2">Pro</p>
+          <p class="font-serif text-4xl mb-1">£19<span class="text-lg text-cream/60"> / month</span></p>
+          <p class="text-sm text-cream/60 mb-8">or £190/year — two months free</p>
+          <ul class="space-y-3 mb-10 text-sm">
+            <li class="flex items-start gap-3">
+              <svg class="w-4 h-4 mt-0.5 flex-shrink-0 text-beam" viewBox="0 0 16 16" fill="none"><path d="M3 8L7 12L13 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              <span class="text-cream">Everything in Free</span>
+            </li>
+            <li class="flex items-start gap-3">
+              <svg class="w-4 h-4 mt-0.5 flex-shrink-0 text-beam" viewBox="0 0 16 16" fill="none"><path d="M3 8L7 12L13 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              <span class="text-cream">No watermark on overlay</span>
+            </li>
+            <li class="flex items-start gap-3">
+              <svg class="w-4 h-4 mt-0.5 flex-shrink-0 text-beam" viewBox="0 0 16 16" fill="none"><path d="M3 8L7 12L13 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              <span class="text-cream">Custom brand colours</span>
+            </li>
+            <li class="flex items-start gap-3">
+              <svg class="w-4 h-4 mt-0.5 flex-shrink-0 text-beam" viewBox="0 0 16 16" fill="none"><path d="M3 8L7 12L13 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              <span class="text-cream">Priority email support</span>
+            </li>
+            <li class="flex items-start gap-3">
+              <svg class="w-4 h-4 mt-0.5 flex-shrink-0 text-beam" viewBox="0 0 16 16" fill="none"><path d="M3 8L7 12L13 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              <span class="text-cream">Cancel anytime</span>
+            </li>
+          </ul>
+          <a href="#waitlist" class="block w-full text-center px-5 py-3 bg-beam text-white rounded-md font-medium hover:opacity-90 transition">
+            Join the waitlist
+          </a>
+        </div>
+      </div>
+
+      <p class="text-center text-sm text-muted mt-8">
+        No credit card to start. Upgrade from your dashboard whenever you're ready.
+      </p>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="border-b border-line py-24">
+    <div class="max-w-3xl mx-auto px-6">
+      <div class="mb-16">
+        <p class="text-xs uppercase tracking-[0.18em] text-beam mb-4">FAQ</p>
+        <h2 class="font-serif text-4xl sm:text-5xl tracking-tight leading-tight">The questions we get asked.</h2>
+      </div>
+
+      <div class="space-y-8">
+        <div class="border-b border-line pb-8">
+          <h3 class="font-serif text-xl mb-2 tracking-tight">Does it work with OBS Studio?</h3>
+          <p class="text-muted leading-relaxed">Yes. Beamcue is designed as an OBS Browser Source. If you already use OBS, you're 60 seconds from being set up.</p>
+        </div>
+        <div class="border-b border-line pb-8">
+          <h3 class="font-serif text-xl mb-2 tracking-tight">What about vMix, Streamlabs, or Wirecast?</h3>
+          <p class="text-muted leading-relaxed">Anything that supports a Browser Source URL works. We test against OBS first because it's free and the most common in church AV.</p>
+        </div>
+        <div class="border-b border-line pb-8">
+          <h3 class="font-serif text-xl mb-2 tracking-tight">Do I need a Mac?</h3>
+          <p class="text-muted leading-relaxed">No. Beamcue runs entirely in the browser. The operator app works on any phone, tablet, or computer. OBS itself runs on Mac, Windows, or Linux.</p>
+        </div>
+        <div class="border-b border-line pb-8">
+          <h3 class="font-serif text-xl mb-2 tracking-tight">Can my whole team push slides?</h3>
+          <p class="text-muted leading-relaxed">Yes. Invite team members from your dashboard. Worship leader on stage, media operator at the back — both can push at the same time without conflicts.</p>
+        </div>
+        <div class="border-b border-line pb-8">
+          <h3 class="font-serif text-xl mb-2 tracking-tight">What Bible translations are included?</h3>
+          <p class="text-muted leading-relaxed">KJV (King James) is bundled. For other translations, paste verse text directly. ESV and NIV support is on the roadmap.</p>
+        </div>
+        <div class="border-b border-line pb-8">
+          <h3 class="font-serif text-xl mb-2 tracking-tight">What if my internet drops mid-service?</h3>
+          <p class="text-muted leading-relaxed">The current slide stays on the overlay. Your operator app reconnects automatically. The overlay never goes blank unless you tell it to.</p>
+        </div>
+        <div>
+          <h3 class="font-serif text-xl mb-2 tracking-tight">Can I cancel anytime?</h3>
+          <p class="text-muted leading-relaxed">Yes. Cancel from your dashboard. No phone calls, no retention email cycle.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- WAITLIST CTA -->
+  <section id="waitlist" class="py-24 bg-ink text-cream">
+    <div class="max-w-3xl mx-auto px-6 text-center">
+      <h2 class="font-serif text-5xl sm:text-6xl tracking-tight leading-tight mb-6">
+        Sunday is in a few days.
+      </h2>
+      <p class="text-lg text-cream/70 mb-10 max-w-xl mx-auto">
+        Beamcue is in beta. We're rolling out signups to small streaming churches first. Drop your email and we'll get you in.
+      </p>
+
+      <form
+        action="https://formspree.io/f/REPLACE_WITH_FORMSPREE_ID"
+        method="POST"
+        class="flex flex-col sm:flex-row gap-3 max-w-md mx-auto"
+      >
+        <input
+          type="email"
+          name="email"
+          required
+          placeholder="you@church.org"
+          class="flex-1 px-4 py-3 bg-white/5 border border-white/15 rounded-md text-cream placeholder:text-cream/40 focus:outline-none focus:border-beam transition"
+        >
+        <button
+          type="submit"
+          class="px-6 py-3 bg-beam text-white rounded-md font-medium hover:opacity-90 transition whitespace-nowrap"
+        >
+          Join the waitlist
+        </button>
+      </form>
+
+      <p class="text-xs text-cream/40 mt-6">
+        We'll email you when sign-ups open. No spam. Unsubscribe with one click.
+      </p>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="py-12">
+    <div class="max-w-6xl mx-auto px-6 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-6">
+      <div>
+        <a href="/" class="font-serif text-lg tracking-tight">Beamcue</a>
+        <p class="text-sm text-muted mt-2">Made for churches that stream.</p>
+      </div>
+      <div class="flex items-center gap-6 text-sm text-muted">
+        <a href="#pricing" class="hover:text-ink transition">Pricing</a>
+        <a href="https://github.com/beamcue/beamcueapp" target="_blank" rel="noopener" class="hover:text-ink transition">GitHub</a>
+      </div>
+    </div>
+  </footer>
+
+</div>
+</body>
+</html>

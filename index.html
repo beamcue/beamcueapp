@@ -146,7 +146,7 @@
         </a>
       </div>
       <p class="text-sm text-muted text-center mb-20">
-        Free for your first church. £19/mo to remove the watermark.
+        Free for your first church. Pro from £14.92/mo.
       </p>
 
       <!-- THE VISUAL: Split-screen phone + broadcast with beam -->
@@ -448,7 +448,7 @@
               <th class="text-left py-4 pr-4 font-medium text-sm text-muted"></th>
               <th class="text-left py-4 px-4 font-serif text-lg">
                 Beamcue
-                <span class="block text-xs font-normal text-beam mt-1" style="font-family: 'Inter Tight', sans-serif;">£19/mo</span>
+                <span class="block text-xs font-normal text-beam mt-1" style="font-family: 'Inter Tight', sans-serif;">from £14.92/mo</span>
               </th>
               <th class="text-left py-4 px-4 font-medium text-sm text-muted">
                 ProPresenter
@@ -520,14 +520,38 @@
   <!-- PRICING -->
   <section id="pricing" class="border-b border-line py-24" style="background: #f4f3ee;">
     <div class="max-w-6xl mx-auto px-6">
-      <div class="mb-16 text-center">
+      <div class="mb-12 text-center">
         <p class="text-xs uppercase tracking-[0.18em] text-beam mb-4">Pricing</p>
         <h2 class="font-serif text-4xl sm:text-5xl tracking-tight max-w-2xl mx-auto leading-tight">
-          Free for one church. £19 a month to remove the watermark.
+          Free for one church. Upgrade when you're ready.
         </h2>
       </div>
 
+      <!-- Billing toggle -->
+      <div class="flex justify-center mb-12">
+        <div class="inline-flex items-center bg-cream border border-line rounded-full p-1 relative">
+          <button
+            id="toggle-monthly"
+            type="button"
+            class="relative z-10 px-5 py-2 text-sm font-medium rounded-full transition text-muted"
+            onclick="setBillingMode('monthly')"
+          >
+            Monthly
+          </button>
+          <button
+            id="toggle-annual"
+            type="button"
+            class="relative z-10 px-5 py-2 text-sm font-medium rounded-full transition bg-ink text-cream flex items-center gap-2"
+            onclick="setBillingMode('annual')"
+          >
+            Annual
+            <span class="bg-beam text-white text-[10px] px-2 py-0.5 rounded-full font-semibold">Save 21%</span>
+          </button>
+        </div>
+      </div>
+
       <div class="grid md:grid-cols-2 gap-6 max-w-4xl mx-auto">
+        <!-- Free -->
         <div class="bg-cream border border-line rounded-lg p-8">
           <p class="text-sm font-medium text-muted mb-2">Free</p>
           <p class="font-serif text-4xl mb-1">£0</p>
@@ -555,11 +579,23 @@
           </a>
         </div>
 
+        <!-- Pro -->
         <div class="bg-ink text-cream rounded-lg p-8 relative">
           <div class="absolute -top-3 right-6 bg-beam text-white text-xs px-2.5 py-1 rounded font-medium">Recommended</div>
           <p class="text-sm font-medium text-cream/60 mb-2">Pro</p>
-          <p class="font-serif text-4xl mb-1">£19<span class="text-lg text-cream/60"> / month</span></p>
-          <p class="text-sm text-cream/60 mb-8">or £190/year — two months free</p>
+
+          <!-- Monthly price (hidden by default — annual is default) -->
+          <div id="price-monthly" class="hidden">
+            <p class="font-serif text-4xl mb-1">£19<span class="text-lg text-cream/60"> / month</span></p>
+            <p class="text-sm text-cream/60 mb-8">billed monthly</p>
+          </div>
+
+          <!-- Annual price (default visible) -->
+          <div id="price-annual">
+            <p class="font-serif text-4xl mb-1">£14.92<span class="text-lg text-cream/60"> / month</span></p>
+            <p class="text-sm text-cream/60 mb-8">£179 billed annually · save £49 a year</p>
+          </div>
+
           <ul class="space-y-3 mb-10 text-sm">
             <li class="flex items-start gap-3">
               <svg class="w-4 h-4 mt-0.5 flex-shrink-0 text-beam" viewBox="0 0 16 16" fill="none"><path d="M3 8L7 12L13 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
@@ -592,6 +628,31 @@
         No credit card to start. Upgrade from your dashboard whenever you're ready.
       </p>
     </div>
+
+    <script>
+      function setBillingMode(mode) {
+        const monthlyBtn = document.getElementById('toggle-monthly');
+        const annualBtn = document.getElementById('toggle-annual');
+        const monthlyPrice = document.getElementById('price-monthly');
+        const annualPrice = document.getElementById('price-annual');
+
+        if (mode === 'monthly') {
+          monthlyBtn.classList.add('bg-ink', 'text-cream');
+          monthlyBtn.classList.remove('text-muted');
+          annualBtn.classList.remove('bg-ink', 'text-cream');
+          annualBtn.classList.add('text-muted');
+          monthlyPrice.classList.remove('hidden');
+          annualPrice.classList.add('hidden');
+        } else {
+          annualBtn.classList.add('bg-ink', 'text-cream');
+          annualBtn.classList.remove('text-muted');
+          monthlyBtn.classList.remove('bg-ink', 'text-cream');
+          monthlyBtn.classList.add('text-muted');
+          annualPrice.classList.remove('hidden');
+          monthlyPrice.classList.add('hidden');
+        }
+      }
+    </script>
   </section>
 
   <!-- FAQ -->

@@ -38,7 +38,6 @@
   .font-serif { font-family: 'Fraunces', ui-serif, Georgia, serif; font-feature-settings: 'ss01', 'ss02'; }
   * { -webkit-tap-highlight-color: transparent; }
 
-  /* Beam animation — a pulse traveling along the path */
   @keyframes beamPulse {
     0% { stroke-dashoffset: 400; opacity: 0; }
     20% { opacity: 1; }
@@ -50,7 +49,6 @@
     animation: beamPulse 3.2s ease-in-out infinite;
   }
 
-  /* Pulse on the phone tap point */
   @keyframes tapPulse {
     0%, 100% { transform: scale(1); opacity: 0.5; }
     50% { transform: scale(1.6); opacity: 0; }
@@ -60,7 +58,6 @@
     animation: tapPulse 3.2s ease-out infinite;
   }
 
-  /* Overlay reveal pulse */
   @keyframes overlayReveal {
     0%, 30% { opacity: 0.4; }
     60%, 100% { opacity: 1; }
@@ -69,7 +66,6 @@
     animation: overlayReveal 3.2s ease-in-out infinite;
   }
 
-  /* Subtle film grain — pure CSS */
   .grain::before {
     content: '';
     position: absolute;
@@ -118,7 +114,6 @@
   <section class="border-b border-line overflow-hidden">
     <div class="max-w-6xl mx-auto px-6 pt-20 pb-20">
 
-      <!-- Eyebrow -->
       <div class="text-center mb-8">
         <div class="inline-flex items-center gap-2 text-xs uppercase tracking-[0.18em] text-muted">
           <span class="w-1.5 h-1.5 rounded-full bg-beam"></span>
@@ -126,17 +121,14 @@
         </div>
       </div>
 
-      <!-- Headline -->
       <h1 class="font-serif text-5xl sm:text-6xl lg:text-7xl xl:text-8xl leading-[1.02] tracking-tight text-center max-w-5xl mx-auto mb-6">
         Push Sunday's slides — <span class="text-beam italic">from your phone.</span>
       </h1>
 
-      <!-- Subhead -->
       <p class="text-lg sm:text-xl text-muted leading-relaxed text-center max-w-2xl mx-auto mb-10">
         Beamcue is the phone-first overlay system for OBS Studio. Tap a slide, the scripture appears on your livestream. No install. No PowerPoint.
       </p>
 
-      <!-- CTAs -->
       <div class="flex flex-wrap items-center justify-center gap-4 mb-3">
         <a href="#waitlist" class="px-7 py-3.5 bg-ink text-cream rounded-md font-medium hover:bg-beam transition">
           Join the waitlist
@@ -149,29 +141,21 @@
         Free for your first church. Pro from £14.92/mo.
       </p>
 
-      <!-- THE VISUAL: Split-screen phone + broadcast with beam -->
       <div class="relative max-w-5xl mx-auto">
 
         <!-- Mobile: stacked vertical layout -->
         <div class="lg:hidden">
 
-          <!-- Phone (stacked, top) -->
           <div class="flex justify-center mb-6">
             <div class="relative w-[220px]">
-              <!-- Phone frame -->
               <div class="relative bg-ink rounded-[2.5rem] p-2.5 shadow-2xl shadow-ink/30 border border-ink/20">
-                <!-- Speaker notch -->
                 <div class="absolute top-2 left-1/2 -translate-x-1/2 w-20 h-5 bg-ink rounded-full z-10"></div>
-                <!-- Screen -->
                 <div class="bg-cream rounded-[2rem] aspect-[9/19] overflow-hidden relative">
-                  <!-- Phone screen content -->
                   <div class="absolute inset-0 p-3 pt-7 flex flex-col">
-                    <!-- Status bar -->
                     <div class="flex justify-between text-[8px] text-ink/60 px-1 mb-3">
                       <span>9:42</span>
                       <span>● ● ●</span>
                     </div>
-                    <!-- Op UI title -->
                     <div class="text-[9px] text-muted uppercase tracking-wider mb-1.5">Slide Type</div>
                     <div class="grid grid-cols-5 gap-1 mb-3">
                       <div class="aspect-square rounded bg-line/60"></div>
@@ -180,19 +164,16 @@
                       <div class="aspect-square rounded bg-line/60"></div>
                       <div class="aspect-square rounded bg-line/60"></div>
                     </div>
-                    <!-- Staged -->
                     <div class="text-[9px] text-muted uppercase tracking-wider mb-1.5">Staged</div>
                     <div class="bg-line/40 rounded p-2 mb-2">
                       <div class="text-[8px] text-muted mb-0.5">REFERENCE</div>
                       <div class="text-[10px] font-medium mb-1.5">John 3:16</div>
                       <div class="text-[7px] text-ink/70 leading-tight">For God so loved the world…</div>
                     </div>
-                    <!-- Preview -->
                     <div class="bg-ink rounded aspect-video mb-2 flex flex-col items-center justify-center px-2 text-center">
                       <div class="text-white text-[6px] leading-tight mb-1">For God so loved the world…</div>
                       <div class="text-beam text-[6px] font-bold tracking-wider">JOHN 3:16</div>
                     </div>
-                    <!-- Push button with ripple -->
                     <div class="mt-auto relative">
                       <div class="absolute inset-0 bg-beam rounded tap-ripple"></div>
                       <button class="relative w-full bg-beam text-white text-[10px] font-semibold py-2.5 rounded">
@@ -202,36 +183,29 @@
                   </div>
                 </div>
               </div>
-              <!-- Finger label -->
               <div class="absolute -right-2 bottom-12 bg-cream border border-line rounded-md px-2 py-1 text-[10px] font-medium shadow-sm">
                 <span class="text-beam">tap</span>
               </div>
             </div>
           </div>
 
-          <!-- Beam (vertical SVG for mobile) -->
           <div class="flex justify-center mb-6">
             <svg viewBox="0 0 40 80" class="w-10 h-20" fill="none" xmlns="http://www.w3.org/2000/svg">
               <path d="M 20 0 Q 5 40 20 80" stroke="#ff5c1f" stroke-width="2" stroke-linecap="round" stroke-dasharray="60 340" class="beam-path-anim"/>
             </svg>
           </div>
 
-          <!-- Broadcast (stacked, bottom) -->
           <div class="flex justify-center">
             <div class="relative w-full max-w-md">
               <div class="bg-ink rounded-lg overflow-hidden shadow-2xl shadow-ink/20 border border-ink/20">
-                <!-- Stream chrome -->
                 <div class="bg-ink px-3 py-1.5 flex items-center justify-between border-b border-white/10">
                   <span class="text-white/60 text-[10px] uppercase tracking-wider live-dot">Live · YouTube</span>
                   <span class="text-white/40 text-[10px]">1,247 watching</span>
                 </div>
-                <!-- Scene + overlay -->
                 <div class="relative aspect-video bg-gradient-to-br from-[#1a1a1f] via-[#0f0f10] to-[#0a0a0b]">
-                  <!-- Subtle scene hint -->
                   <div class="absolute inset-0 opacity-20">
                     <div class="absolute bottom-1/4 left-1/2 -translate-x-1/2 w-20 h-32 bg-white/10 rounded-t-full blur-2xl"></div>
                   </div>
-                  <!-- Overlay -->
                   <div class="absolute inset-0 flex flex-col items-center justify-center text-center px-6 overlay-reveal">
                     <p class="text-white/95 text-sm font-light leading-snug mb-3 max-w-[260px]">
                       For God so loved the world, that he gave his only begotten Son
@@ -240,7 +214,6 @@
                   </div>
                 </div>
               </div>
-              <!-- "Live on stream" label -->
               <div class="absolute -bottom-3 left-4 bg-cream border border-line rounded-md px-2.5 py-1 text-[10px] font-medium shadow-sm">
                 <span class="text-muted">Now in</span> <span class="text-ink">OBS</span>
               </div>
@@ -251,22 +224,16 @@
         <!-- Desktop: horizontal split layout -->
         <div class="hidden lg:grid lg:grid-cols-[280px_1fr] lg:items-center lg:gap-0 relative">
 
-          <!-- Phone (left, hero) -->
           <div class="relative z-10">
             <div class="relative w-[280px]">
-              <!-- Phone frame -->
               <div class="relative bg-ink rounded-[2.5rem] p-3 shadow-2xl shadow-ink/30 border border-ink/20">
-                <!-- Speaker notch -->
                 <div class="absolute top-3 left-1/2 -translate-x-1/2 w-24 h-6 bg-ink rounded-full z-10"></div>
-                <!-- Screen -->
                 <div class="bg-cream rounded-[2rem] aspect-[9/19] overflow-hidden relative">
                   <div class="absolute inset-0 p-4 pt-9 flex flex-col">
-                    <!-- Status bar -->
                     <div class="flex justify-between text-[9px] text-ink/60 px-1 mb-4">
                       <span>9:42</span>
                       <span>● ● ●</span>
                     </div>
-                    <!-- Slide Type picker -->
                     <div class="text-[10px] text-muted uppercase tracking-wider mb-2">Slide Type</div>
                     <div class="grid grid-cols-5 gap-1.5 mb-4">
                       <div class="aspect-square rounded bg-line/60 flex items-center justify-center text-[10px] text-muted">T</div>
@@ -275,19 +242,16 @@
                       <div class="aspect-square rounded bg-line/60 flex items-center justify-center text-[10px] text-muted">A</div>
                       <div class="aspect-square rounded bg-line/60 flex items-center justify-center text-[10px] text-muted">⬛</div>
                     </div>
-                    <!-- Staged -->
                     <div class="text-[10px] text-muted uppercase tracking-wider mb-2">Staged</div>
                     <div class="bg-line/40 rounded-md p-2.5 mb-3">
                       <div class="text-[8px] text-muted mb-1">REFERENCE</div>
                       <div class="text-[11px] font-semibold mb-2">John 3:16</div>
                       <div class="text-[8px] text-ink/70 leading-tight">For God so loved the world, that he gave his only begotten Son</div>
                     </div>
-                    <!-- Mini preview -->
                     <div class="bg-ink rounded aspect-video mb-3 flex flex-col items-center justify-center px-3 text-center">
                       <div class="text-white text-[7px] leading-tight mb-1">For God so loved the world…</div>
                       <div class="text-beam text-[7px] font-bold tracking-wider">JOHN 3:16</div>
                     </div>
-                    <!-- Push button with ripple -->
                     <div class="mt-auto relative">
                       <div class="absolute inset-0 bg-beam rounded-md tap-ripple"></div>
                       <button class="relative w-full bg-beam text-white text-[11px] font-semibold py-3 rounded-md">
@@ -298,14 +262,12 @@
                 </div>
               </div>
 
-              <!-- "Push to live" floating label with arrow -->
               <div class="absolute -right-12 top-1/2 -translate-y-1/2 bg-cream border border-line rounded-md px-3 py-1.5 text-xs font-medium shadow-sm z-20 whitespace-nowrap">
                 One tap →
               </div>
             </div>
           </div>
 
-          <!-- Beam SVG (overlaps phone and broadcast) -->
           <svg
             class="absolute pointer-events-none z-0"
             style="left: 240px; top: 50%; transform: translateY(-50%); width: 280px; height: 200px;"
@@ -313,7 +275,6 @@
             fill="none"
             xmlns="http://www.w3.org/2000/svg"
           >
-            <!-- Curving path from phone to broadcast -->
             <path
               d="M 0 100 Q 140 30 280 100"
               stroke="#ff5c1f"
@@ -322,7 +283,6 @@
               stroke-dasharray="60 340"
               class="beam-path-anim"
             />
-            <!-- Faint guide path (always visible) -->
             <path
               d="M 0 100 Q 140 30 280 100"
               stroke="#ff5c1f"
@@ -333,36 +293,29 @@
             />
           </svg>
 
-          <!-- Broadcast (right) -->
           <div class="relative z-10 pl-32">
             <div class="relative">
               <div class="bg-ink rounded-lg overflow-hidden shadow-2xl shadow-ink/25 border border-ink/20">
-                <!-- Stream chrome -->
                 <div class="bg-ink px-4 py-2 flex items-center justify-between border-b border-white/10">
                   <span class="text-white/60 text-[11px] uppercase tracking-wider live-dot">Live · YouTube</span>
                   <span class="text-white/40 text-[11px]">1,247 watching</span>
                 </div>
-                <!-- Scene + overlay -->
                 <div class="relative aspect-video bg-gradient-to-br from-[#1a1a1f] via-[#0f0f10] to-[#0a0a0b]">
-                  <!-- Subtle scene hint -->
                   <div class="absolute inset-0 opacity-25">
                     <div class="absolute bottom-1/4 left-1/2 -translate-x-1/2 w-32 h-48 bg-white/10 rounded-t-full blur-3xl"></div>
                     <div class="absolute bottom-0 left-0 right-0 h-12 bg-gradient-to-t from-black/40 to-transparent"></div>
                   </div>
-                  <!-- The actual overlay -->
                   <div class="absolute inset-0 flex flex-col items-center justify-center text-center px-10 overlay-reveal">
                     <p class="text-white/95 text-lg font-light leading-snug mb-4 max-w-md">
                       For God so loved the world, that he gave his only begotten Son
                     </p>
                     <p class="text-beam text-xs font-bold tracking-wider">JOHN 3:16</p>
                   </div>
-                  <!-- Watermark -->
                   <div class="absolute bottom-3 right-3 text-white/30 text-[10px] font-light">
                     beamcue.com
                   </div>
                 </div>
               </div>
-              <!-- "Now in OBS" label -->
               <div class="absolute -bottom-3 -left-4 bg-cream border border-line rounded-md px-3 py-1.5 text-xs font-medium shadow-sm">
                 <span class="text-muted">Now live in</span> <span class="text-ink">OBS</span>
               </div>
@@ -527,7 +480,6 @@
         </h2>
       </div>
 
-      <!-- Billing toggle -->
       <div class="flex justify-center mb-12">
         <div class="inline-flex items-center bg-cream border border-line rounded-full p-1 relative">
           <button
@@ -551,7 +503,6 @@
       </div>
 
       <div class="grid md:grid-cols-2 gap-6 max-w-4xl mx-auto">
-        <!-- Free -->
         <div class="bg-cream border border-line rounded-lg p-8">
           <p class="text-sm font-medium text-muted mb-2">Free</p>
           <p class="font-serif text-4xl mb-1">£0</p>
@@ -579,18 +530,15 @@
           </a>
         </div>
 
-        <!-- Pro -->
         <div class="bg-ink text-cream rounded-lg p-8 relative">
           <div class="absolute -top-3 right-6 bg-beam text-white text-xs px-2.5 py-1 rounded font-medium">Recommended</div>
           <p class="text-sm font-medium text-cream/60 mb-2">Pro</p>
 
-          <!-- Monthly price (hidden by default — annual is default) -->
           <div id="price-monthly" class="hidden">
             <p class="font-serif text-4xl mb-1">£19<span class="text-lg text-cream/60"> / month</span></p>
             <p class="text-sm text-cream/60 mb-8">billed monthly</p>
           </div>
 
-          <!-- Annual price (default visible) -->
           <div id="price-annual">
             <p class="font-serif text-4xl mb-1">£14.92<span class="text-lg text-cream/60"> / month</span></p>
             <p class="text-sm text-cream/60 mb-8">£179 billed annually · save £49 a year</p>
@@ -707,29 +655,94 @@
       </p>
 
       <form
-        action="https://formspree.io/f/REPLACE_WITH_FORMSPREE_ID"
-        method="POST"
-        class="flex flex-col sm:flex-row gap-3 max-w-md mx-auto"
+        id="waitlist-form"
+        class="flex flex-col gap-3 max-w-md mx-auto"
       >
         <input
           type="email"
           name="email"
+          id="waitlist-email"
           required
           placeholder="you@church.org"
-          class="flex-1 px-4 py-3 bg-white/5 border border-white/15 rounded-md text-cream placeholder:text-cream/40 focus:outline-none focus:border-beam transition"
+          class="px-4 py-3 bg-white/5 border border-white/15 rounded-md text-cream placeholder:text-cream/40 focus:outline-none focus:border-beam transition"
+        >
+        <input
+          type="text"
+          name="church_name"
+          id="waitlist-church"
+          placeholder="Your church name"
+          class="px-4 py-3 bg-white/5 border border-white/15 rounded-md text-cream placeholder:text-cream/40 focus:outline-none focus:border-beam transition"
         >
         <button
           type="submit"
-          class="px-6 py-3 bg-beam text-white rounded-md font-medium hover:opacity-90 transition whitespace-nowrap"
+          id="waitlist-submit"
+          class="px-6 py-3 bg-beam text-white rounded-md font-medium hover:opacity-90 transition"
         >
           Join the waitlist
         </button>
+        <p id="waitlist-message" class="text-sm text-center mt-2 hidden"></p>
       </form>
 
       <p class="text-xs text-cream/40 mt-6">
         We'll email you when sign-ups open. No spam. Unsubscribe with one click.
       </p>
     </div>
+
+    <script>
+      (function() {
+        const SUPABASE_URL = 'https://ckqbzizywrjmoiguevid.supabase.co';
+        const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImNrcWJ6aXp5d3JqbW9pZ3VldmlkIiwicm9sZSI6ImFub24iLCJpYXQiOjE3Nzk2NDIxNzEsImV4cCI6MjA5NTIxODE3MX0.R8e6wIbmM3G_HW0oZyURUKUfXkdkiobFJdgC_Fvzttw';
+
+        const form = document.getElementById('waitlist-form');
+        const emailInput = document.getElementById('waitlist-email');
+        const churchInput = document.getElementById('waitlist-church');
+        const submitBtn = document.getElementById('waitlist-submit');
+        const message = document.getElementById('waitlist-message');
+
+        function showMessage(text, isError) {
+          message.textContent = text;
+          message.classList.remove('hidden', 'text-red-400', 'text-green-400');
+          message.classList.add(isError ? 'text-red-400' : 'text-green-400');
+        }
+
+        form.addEventListener('submit', async function(e) {
+          e.preventDefault();
+          submitBtn.disabled = true;
+          submitBtn.textContent = 'Joining...';
+
+          try {
+            const response = await fetch(SUPABASE_URL + '/rest/v1/waitlist_signups', {
+              method: 'POST',
+              headers: {
+                'Content-Type': 'application/json',
+                'apikey': SUPABASE_ANON_KEY,
+                'Authorization': 'Bearer ' + SUPABASE_ANON_KEY,
+                'Prefer': 'return=minimal'
+              },
+              body: JSON.stringify({
+                email: emailInput.value.trim(),
+                church_name: churchInput.value.trim() || null,
+                source: 'landing_page'
+              })
+            });
+
+            if (response.ok) {
+              showMessage("You're on the list. We'll be in touch.", false);
+              form.reset();
+              submitBtn.textContent = 'Joined ✓';
+            } else {
+              showMessage('Something went wrong. Please try again.', true);
+              submitBtn.disabled = false;
+              submitBtn.textContent = 'Join the waitlist';
+            }
+          } catch (err) {
+            showMessage('Network error. Please try again.', true);
+            submitBtn.disabled = false;
+            submitBtn.textContent = 'Join the waitlist';
+          }
+        });
+      })();
+    </script>
   </section>
 
   <!-- FOOTER -->
